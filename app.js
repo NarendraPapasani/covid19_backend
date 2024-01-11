@@ -63,7 +63,7 @@ app.get('/states/', async (request, response) => {
   response.send(res.map(all => statetable(all)))
 })
 
-//get particular state
+//API 2 get particular state
 app.get('/states/:stateId/', async (request, response) => {
   const {stateId} = request.params
   const QQuery = `SELECT * FROM state WHERE state_id = ${stateId}`
@@ -72,7 +72,7 @@ app.get('/states/:stateId/', async (request, response) => {
   response.send(statetable(res))
 })
 
-//post
+//API 3 post
 
 app.post('/districts/', async (request, response) => {
   const {districtName, stateId, cases, cured, active, deaths} = request.body
@@ -83,7 +83,7 @@ app.post('/districts/', async (request, response) => {
 })
 module.exports = app
 
-//get particular district
+//API 4 get particular district
 app.get('/districts/:districtId/', async (request, response) => {
   const {districtId} = request.params
   const Query = `SELECT * FROM district WHERE district_id = ${districtId}`
