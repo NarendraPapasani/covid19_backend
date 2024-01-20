@@ -4,7 +4,7 @@ const {open} = require('sqlite')
 const sqlite3 = require('sqlite3')
 const mypath = path.join(__dirname, 'covid19India.db')
 const app = express()
-
+app.use(express.json());
 let db = null
 
 const InitDB = async () => {
@@ -79,7 +79,7 @@ app.post('/districts/', async (request, response) => {
   const query = `INSERT INTO district (district_name,state_id,cases,cured,active,deaths)
                   VALUES ('${districtName}',${stateId},${cases},${cured},${active},${deaths})`
   await db.run(query, [districtName, stateId, cases, cured, active, deaths])
-  response.send('District Sucessfully Added')
+  response.send('District Successfully Added')
 })
 module.exports = app
 
